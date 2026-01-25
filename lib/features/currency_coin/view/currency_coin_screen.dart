@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/repositories/currency_coins/models/currency_coin_model.dart';
 
 class CurrencyCoinScreen extends StatefulWidget {
   const CurrencyCoinScreen({super.key});
@@ -10,12 +11,11 @@ class CurrencyCoinScreen extends StatefulWidget {
 
 class _CurrencyCoinScreenState extends State<CurrencyCoinScreen> {
 
-  String? coinName;
+  late final String coinName;
 
   @override
   void didChangeDependencies() {
     final arg = ModalRoute.of(context)?.settings.arguments;
-    assert(arg != null && arg is String, 'U must provide String arg');
     coinName = arg as String;
     setState(() {});
     super.didChangeDependencies();
