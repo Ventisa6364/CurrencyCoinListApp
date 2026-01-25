@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/repositories/currency_coins/models/currency_coin_model.dart';
+import 'package:flutter_application_1/repositories/currency_coins/currency_coins.dart';
 
 class CurrencyCoinScreen extends StatefulWidget {
   const CurrencyCoinScreen({super.key});
@@ -11,12 +10,11 @@ class CurrencyCoinScreen extends StatefulWidget {
 
 class _CurrencyCoinScreenState extends State<CurrencyCoinScreen> {
 
-  late final String coinName;
+  late final CurrencyCoin coin;
 
   @override
   void didChangeDependencies() {
-    final arg = ModalRoute.of(context)?.settings.arguments;
-    coinName = arg as String;
+    coin = ModalRoute.of(context)?.settings.arguments as CurrencyCoin;
     setState(() {});
     super.didChangeDependencies();
   }
@@ -24,7 +22,9 @@ class _CurrencyCoinScreenState extends State<CurrencyCoinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(coinName ?? '...', style: Theme.of(context).textTheme.bodyLarge,),),
+      appBar: AppBar(title: Text(
+        ('${coin.name.toUpperCase()} ${coin.flag}'), style: Theme.of(context).textTheme.bodyLarge,),
+      ),
     );
   }
 }

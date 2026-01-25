@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/currency_list/widgets/widgets.dart';
-import 'package:flutter_application_1/repositories/currency_coins/currency_coins_repositories.dart';
-import '../../../repositories/currency_coins/models/currency_coin_model.dart';
+import 'package:flutter_application_1/repositories/currency_coins/currency_coins.dart';
+import 'package:get_it/get_it.dart';
 
 
 class CurrencyListScreen extends StatefulWidget {
@@ -52,7 +52,7 @@ class _CurrencyListScreenState extends State<CurrencyListScreen> {
 
 
   Future<void> _loadCurrencyCoin() async {
-    _currencyCoinsList = await CurrencyCoinsRepositories().getCoinsList();
+    _currencyCoinsList = await GetIt.I<AbstractCoinsRepository>().getCoinsList();
     setState(() {});
   }
 }

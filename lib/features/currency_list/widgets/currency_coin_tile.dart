@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../repositories/currency_coins/models/currency_coin_model.dart';
+import 'package:flutter_application_1/repositories/currency_coins/currency_coins.dart';
 
 class CurrencyListTile extends StatelessWidget {
   const CurrencyListTile({
@@ -30,7 +30,7 @@ class CurrencyListTile extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           '/coin',
-          arguments: coin.name.toUpperCase(),
+          arguments: coin,
         );
       },
     );
