@@ -9,7 +9,7 @@ class CurrencyCoinsRepositories {
 
   Future<List<CurrencyCoin>> getCoinsList() async {
     final response = await Dio().get(
-        'https://currencyrateapi.com/api/latest?base=RUB&codes=USD,EUR,UAH,GBP,ILS,JPY,KRW,AED,CHF,CNY,ETB,KZT'
+        'https://currencyrateapi.com/api/latest?base=RUB&codes=USD,EUR,UAH,GBP,ILS,JPY,KRW,AED,CHF,CNY,ETB,KZT,AUD,CAD,HKD,NZD,SEK,SGD,NOK,MXN'
     );
 
     final data = response.data as Map<String, dynamic>;
