@@ -8,7 +8,6 @@ import 'package:get_it/get_it.dart';
 void main() {
   GetIt.I.registerLazySingleton<AbstractCoinsRepository>(
       () => CurrencyCoinsRepositories(dio: Dio()));
-
   runApp(const CurrencyCoinListApp());
 }
 
