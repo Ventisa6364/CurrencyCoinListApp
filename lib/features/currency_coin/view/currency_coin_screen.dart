@@ -45,7 +45,7 @@ class _CurrencyCoinScreenState extends State<CurrencyCoinScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          ('${coin.name.toUpperCase()} ${coin.flag}'),
+          (coin.name.toUpperCase()),
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),

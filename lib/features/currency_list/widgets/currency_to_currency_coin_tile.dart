@@ -14,9 +14,9 @@ class CurrencyToCurrencyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (coin != baseCurrency) {
-      final double ratio = coin.priceInRub / baseCurrency.priceInRub;
+      final double ratio = coin.price / baseCurrency.price;
       return ListTile(
-        leading: Text(coin.flag),
+        leading: coin.flag,
         title: Text(coin.name.toUpperCase(),
           style: Theme
               .of(context)
@@ -39,7 +39,7 @@ class CurrencyToCurrencyListTile extends StatelessWidget {
             .textTheme
             .bodyMedium,
       ),
-      subtitle: Text((1 / coin.priceInRub).toStringAsFixed(2),
+      subtitle: Text((1 / coin.price).toStringAsFixed(2),
         style: Theme
             .of(context)
             .textTheme

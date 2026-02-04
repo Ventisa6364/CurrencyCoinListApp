@@ -1,9 +1,8 @@
-import 'package:currency_picker/currency_picker.dart';
+import 'package:country_flags/country_flags.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/repositories/currency_coins/currency_coins.dart';
 
 class CurrencyCoinsRepositories implements AbstractCoinsRepository {
-  final CurrencyService _currencyService = CurrencyService();
 
   CurrencyCoinsRepositories({required this.dio});
 
@@ -12,7 +11,7 @@ class CurrencyCoinsRepositories implements AbstractCoinsRepository {
   @override
   Future<List<CurrencyCoin>> getCoinsList() async {
     final response = await dio.get(
-      'https://currencyrateapi.com/api/latest?base=RUB&codes=USD,EUR,UAH,GBP,ILS,JPY,KRW,AED,CHF,CNY,ETB,KZT,AUD,CAD,HKD,NZD,SEK,SGD,NOK,MXN',
+      'https://openexchangerates.org/api/latest.json?app_id=28d58daece034dcfadc77402e46f720c',
     );
 
     final data = response.data as Map<String, dynamic>;
@@ -23,10 +22,8 @@ class CurrencyCoinsRepositories implements AbstractCoinsRepository {
         .map(
           (e) => CurrencyCoin(
             name: e.key,
-            priceInRub: double.tryParse(e.value.toString()) ?? 0.0,
-            flag: CurrencyUtils.currencyToEmoji(
-              _currencyService.findByCode(e.key)!,
-            ),
+            price: 1 / (double.tryParse(e.value.toString())!),
+            flag: CountryFlag.fromCurrencyCode(e.key, theme: EmojiTheme(size: 30),),
           ),
         )
         .toList();

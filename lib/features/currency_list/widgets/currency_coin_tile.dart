@@ -12,7 +12,7 @@ class CurrencyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Text(coin.flag),
+      leading: coin.flag,
       trailing: const Icon(
         Icons.arrow_forward_ios, color: Color(0x80f5f5f5),),
       title: Text(coin.name.toUpperCase(),
@@ -21,7 +21,7 @@ class CurrencyListTile extends StatelessWidget {
             .textTheme
             .bodyMedium,
       ),
-      subtitle: Text('${(1 / coin.priceInRub).toStringAsFixed(2)}₽',
+      subtitle: Text('${(double.parse(coin.price.toStringAsFixed(2)) != 0.00) ? coin.price.toStringAsFixed(2) : '0.01'} \$',
         style: Theme
             .of(context)
             .textTheme
